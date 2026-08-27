@@ -25,8 +25,7 @@ def init_db():
         cursor = conn.cursor()
 
         # Buat database jika belum ada
-        cursor.execute("CREATE DATABASE IF NOT EXISTS sentiment_indihome")
-        cursor.execute("USE sentiment_indihome")
+        cursor.execute("USE railway")
 
         # Buat tabel dataset
         cursor.execute("""
