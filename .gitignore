@@ -1,0 +1,23 @@
+# Virtual environment
+.venv/
+venv/
+env/
+ 
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+ 
+# Streamlit secrets (JANGAN pernah di-push, isinya API key/kredensial)
+.streamlit/secrets.toml
+ 
+# OS / editor files
+.DS_Store
+Thumbs.db
+.vscode/
+ 
+# Jupyter checkpoints (kalau pernah pakai notebook)
+.ipynb_checkpoints/
+ 
+# Log files
+*.log

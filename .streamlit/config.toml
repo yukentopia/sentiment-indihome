@@ -1,0 +1,15 @@
+[theme]
+# Warna utama (misal untuk tombol primary dan loading bar) - Merah khas Telkom/Indihome
+primaryColor = "#E60000"
+
+# Warna background utama
+backgroundColor = "#FFFFFF"
+
+# Warna background sekunder (untuk sidebar dan kartu)
+secondaryBackgroundColor = "#F0F2F6"
+
+# Warna teks utama
+textColor = "#262730"
+
+# Pilihan font: "sans serif", "serif", "monospace"
+font = "sans serif"
