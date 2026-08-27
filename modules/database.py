@@ -1,9 +1,12 @@
+import streamlit as st
 import mysql.connector
+
 
 def get_db_connection():
     return mysql.connector.connect(
-        host="localhost",
-        user="root",        # Sesuaikan dengan user XAMPP/MySQL kamu
-        password="",        # Biasanya kosong jika pakai XAMPP default
-        database="sentiment_indihome" # Ganti dengan nama database skripsimu
+        host=st.secrets["MYSQL_HOST"],
+        port=int(st.secrets["MYSQL_PORT"]),
+        user=st.secrets["MYSQL_USER"],
+        password=st.secrets["MYSQL_PASSWORD"],
+        database="sentiment_indihome"
     )
