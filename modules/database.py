@@ -8,5 +8,5 @@ def get_db_connection():
         port=int(st.secrets["MYSQL_PORT"]),
         user=st.secrets["MYSQL_USER"],
         password=st.secrets["MYSQL_PASSWORD"],
-        database="sentiment_indihome"
+        database="railway"
     )
