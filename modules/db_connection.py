@@ -1,28 +1,33 @@
+import streamlit as st
 import mysql.connector
 from mysql.connector import Error
 
+MYSQL_CONFIG = {
+    "host": st.secrets["MYSQL_HOST"],
+    "port": int(st.secrets["MYSQL_PORT"]),
+    "user": st.secrets["MYSQL_USER"],
+    "password": st.secrets["MYSQL_PASSWORD"]
+}
+
 def get_connection():
     try:
-        # Sesuaikan dengan kredensial MySQL kamu
-        conn = mysql.connector.connect(
-            host='localhost',
-            user='root',
-            password='',
-            # database='sentiment_indihome' # Jangan di-set dulu saat inisialisasi awal
-        )
+        conn = mysql.connector.connect(**MYSQL_CONFIG)
         return conn
     except Error as e:
         print(f"Error connecting to MySQL: {e}")
         return None
 
+
 def init_db():
     conn = get_connection()
+
     if conn:
         cursor = conn.cursor()
+
         # Buat database jika belum ada
         cursor.execute("CREATE DATABASE IF NOT EXISTS sentiment_indihome")
         cursor.execute("USE sentiment_indihome")
-        
+
         # Buat tabel dataset
         cursor.execute("""
             CREATE TABLE IF NOT EXISTS dataset_tweets (
@@ -32,7 +37,7 @@ def init_db():
                 label VARCHAR(20)
             )
         """)
-        
+
         # Buat tabel hasil evaluasi
         cursor.execute("""
             CREATE TABLE IF NOT EXISTS model_evaluation (
@@ -45,14 +50,17 @@ def init_db():
                 f1_score FLOAT
             )
         """)
+
         conn.commit()
         cursor.close()
         conn.close()
 
+
 def get_db_connection():
     return mysql.connector.connect(
-        host='localhost',
-        user='root',
-        password='',
-        database='sentiment_indihome'
+        host="hayabusa.proxy.rlwy.net",
+        port=43891,
+        user="root",
+        password="PASSWORD_MYSQL_RAILWAY",
+        database="sentiment_indihome"
     )
